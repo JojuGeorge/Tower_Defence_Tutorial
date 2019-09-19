@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DrawGizmosOnEditor.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Waypoint.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/JOJU/UNITY_PROJECTS/3D/Tower_Defence_Tutorial/Tower Defence_Brackeys_Tutorial/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
