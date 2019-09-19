@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\DrawGizmosOnEditor.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Turret.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Waypoint.cs" />
     <Reference Include="Unity.Timeline.Editor">
