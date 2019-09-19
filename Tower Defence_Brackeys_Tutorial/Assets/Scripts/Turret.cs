@@ -5,11 +5,19 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private Transform _target;
+    private float _fireCountDown = 0f;
 
+    [Header("Unity Setup Fields")]
     [SerializeField] private Transform _turretHead;
+    [SerializeField] private ParticleSystem _bulletParticle;
+
+    [Header("Attributes")]
     [SerializeField] private float _range = 10f;
     [SerializeField] private float _enemyCheckRefreshRate = .5f;
     [SerializeField] private float _turretTurnSpeed = 5f;
+    [SerializeField] private float _fireRate = 1f;
+
+
 
     private void Start()
     {
@@ -19,11 +27,23 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (_target != null)
+        if (_target == null)
         {
-            // For looking at the target
-            LookAtTarget();
+            return;
+            Shoot(false);
         }
+
+        // For looking at the target
+        LookAtTarget();
+
+        // For firing at the enemies
+        _fireCountDown -= Time.deltaTime;
+        if(_fireCountDown <= 0)
+        {
+            Shoot(true);
+            _fireCountDown = 1f / _fireRate;
+        }
+        
     }
 
 
@@ -66,6 +86,13 @@ public class Turret : MonoBehaviour
     }
 
 
+    // For shooting the player
+    private void Shoot(bool isActive)
+    {
+        Debug.Log("Shooting");
+        var emissionModule = _bulletParticle.emission;
+        emissionModule.enabled = isActive;
+    }
 
     private void OnDrawGizmosSelected()
     {
