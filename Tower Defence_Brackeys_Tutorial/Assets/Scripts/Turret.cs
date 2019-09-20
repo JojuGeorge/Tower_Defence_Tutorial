@@ -71,6 +71,10 @@ public class Turret : MonoBehaviour
         {
             _target = nearstEnemy.transform;
         }
+        else
+        {
+            Shoot(false);           // So that the turret wont continue shoooting if the enemy is out of range
+        }
     }
 
 
