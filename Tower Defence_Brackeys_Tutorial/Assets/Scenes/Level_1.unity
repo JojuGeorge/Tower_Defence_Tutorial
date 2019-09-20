@@ -598,6 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 130009512}
   - component: {fileID: 130009513}
+  - component: {fileID: 130009514}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -636,6 +637,20 @@ MonoBehaviour:
   _enemySpawnPoint: {fileID: 60853265}
   _timeBetweenWaves: 5.5
   _delayBetweenEnemySpawn: 0.3
+--- !u!114 &130009514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130009511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5251de3d27e36545b4092d43c5afd91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _standaredTurretPrefab: {fileID: 2503782718735174681, guid: 7fba859106fe9da45acee15bc64ffc28,
+    type: 3}
 --- !u!1001 &143218871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3404,6 +3419,21 @@ PrefabInstance:
     - target: {fileID: 7517590274153110850, guid: 6f6e8bb20bc0edc488d26c32ac9be867,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 923266705955367028, guid: 6f6e8bb20bc0edc488d26c32ac9be867,
+        type: 3}
+      propertyPath: _errorColor.r
+      value: 0.6132076
+      objectReference: {fileID: 0}
+    - target: {fileID: 923266705955367028, guid: 6f6e8bb20bc0edc488d26c32ac9be867,
+        type: 3}
+      propertyPath: _errorColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 923266705955367028, guid: 6f6e8bb20bc0edc488d26c32ac9be867,
+        type: 3}
+      propertyPath: _errorColor.b
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8029,8 +8059,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.62020355, y: 0, z: 0, w: 0.78444093}
-  m_LocalPosition: {x: 37.355797, y: 92.84781, z: 12.6790695}
+  m_LocalRotation: {x: 0.5391252, y: 0.0012633394, z: -0.0008086835, w: 0.84222436}
+  m_LocalPosition: {x: 26.748316, y: 19.989288, z: 55.5739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15652,6 +15682,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 923266705955367028, guid: 6f6e8bb20bc0edc488d26c32ac9be867,
+        type: 3}
+      propertyPath: _positionOffset.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6e8bb20bc0edc488d26c32ac9be867, type: 3}
 --- !u!4 &1802998323 stripped
@@ -18367,56 +18402,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391799, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.753
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391798, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: CollisionModule.minKillSpeed
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391798, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: CollisionModule.m_Bounce.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391798, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: CollisionModule.collidesWithDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391798, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391798, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: EmissionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391798, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391798, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: CollisionModule.collisionMessages
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3560135086505391797, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 35032c0d723942e43b272ccf79a6e97c, type: 2}
-    - target: {fileID: 7830479391783515432, guid: 7fba859106fe9da45acee15bc64ffc28,
-        type: 3}
-      propertyPath: _range
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fba859106fe9da45acee15bc64ffc28, type: 3}

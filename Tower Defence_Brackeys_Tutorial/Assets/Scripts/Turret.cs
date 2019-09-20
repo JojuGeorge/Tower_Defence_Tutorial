@@ -93,7 +93,6 @@ public class Turret : MonoBehaviour
     // For shooting the player
     private void Shoot(bool isActive)
     {
-        Debug.Log("Shooting");
         var emissionModule = _bulletParticle.emission;
         emissionModule.enabled = isActive;
     }
