@@ -11,8 +11,7 @@ public class BuildManager : MonoBehaviour
     private GameObject _turretToBuild;
     public GameObject TurretToBuild { get { return _turretToBuild; } }
 
-    // Temporary to see if its working
-    [SerializeField] private GameObject _standaredTurretPrefab;
+    public GameObject standaredTurret, missileTurret, laserTurret;
 
     private void Awake()
     {
@@ -22,8 +21,10 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    private void Start()
+
+
+    public void SetTurretToBuild(GameObject turret)
     {
-        _turretToBuild = _standaredTurretPrefab;
+        _turretToBuild = turret;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class Node : MonoBehaviour
     // When mouse enters this gameobject change its color
     private void OnMouseEnter()
     {
+        if (BuildManager.Instance.TurretToBuild == null) { return; }        // If no turret selected then no need to highlight
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }      // If we are hovering over UI
+
         if (_turret == null)
         {
             _rend.material.color = _hoverColor;
@@ -41,7 +45,10 @@ public class Node : MonoBehaviour
     // When clicking the mosue button
     private void OnMouseDown()
     {
-        if(_turret != null)                 // If there's a turrent in this node then
+        if(BuildManager.Instance.TurretToBuild == null) { return; }      // If no turrets selected do nothing
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }   // If we are hovering over UI
+
+        if (_turret != null)                                             // If there's a turrent in this node then
         {
             print("cant build turret here");
             return;
