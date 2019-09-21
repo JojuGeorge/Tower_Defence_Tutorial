@@ -25,19 +25,19 @@ public class CameraController : MonoBehaviour
         
 
         // If we click W or if mouse at top of the screen the move forward i.e in z
-        if (Input.GetKey(KeyCode.W) || Input.mousePosition.y >= Screen.height - _panBorderThickness)
+        if (Input.GetKey(KeyCode.W)) // || Input.mousePosition.y >= Screen.height - _panBorderThickness)
         {
             transform.Translate(Vector3.forward * _panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey(KeyCode.S) || Input.mousePosition.y <= _panBorderThickness)
+        if (Input.GetKey(KeyCode.S)) //  || Input.mousePosition.y <= _panBorderThickness)
         {
             transform.Translate(Vector3.back * _panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey(KeyCode.A) || Input.mousePosition.x >= Screen.width - _panBorderThickness)
+        if (Input.GetKey(KeyCode.A)) // || Input.mousePosition.x >= Screen.width - _panBorderThickness)
         {
             transform.Translate(Vector3.right * _panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey(KeyCode.D) || Input.mousePosition.x <=  _panBorderThickness)
+        if (Input.GetKey(KeyCode.D)) // || Input.mousePosition.x <=  _panBorderThickness)
         {
             transform.Translate(Vector3.left * _panSpeed * Time.deltaTime, Space.World);
         }

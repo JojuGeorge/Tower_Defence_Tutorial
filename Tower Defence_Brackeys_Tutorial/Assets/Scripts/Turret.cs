@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private Transform _target;
+    private Transform _target = null;
     private float _fireCountDown = 0f;
 
     [Header("Unity Setup Fields")]
     [SerializeField] private Transform _turretHead;
-    [SerializeField] private ParticleSystem _bulletParticle;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _fireingPoint;
 
     [Header("Attributes")]
     [SerializeField] private float _range = 10f;
@@ -30,7 +31,6 @@ public class Turret : MonoBehaviour
         if (_target == null)
         {
             return;
-            Shoot(false);
         }
 
         // For looking at the target
@@ -38,9 +38,9 @@ public class Turret : MonoBehaviour
 
         // For firing at the enemies
         _fireCountDown -= Time.deltaTime;
-        if(_fireCountDown <= 0)
+        if(_fireCountDown <= 0 && _target != null)
         {
-            Shoot(true);
+            Shoot();
             _fireCountDown = 1f / _fireRate;
         }
         
@@ -71,10 +71,6 @@ public class Turret : MonoBehaviour
         {
             _target = nearstEnemy.transform;
         }
-        else
-        {
-            Shoot(false);           // So that the turret wont continue shoooting if the enemy is out of range
-        }
     }
 
 
@@ -91,10 +87,17 @@ public class Turret : MonoBehaviour
 
 
     // For shooting the player
-    private void Shoot(bool isActive)
+    private void Shoot()
     {
-        var emissionModule = _bulletParticle.emission;
-        emissionModule.enabled = isActive;
+        if(_bulletPrefab == null) { return; }
+
+        GameObject bulletGO = Instantiate(_bulletPrefab, _fireingPoint.position, _fireingPoint.rotation) as GameObject;
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if(bullet != null) {
+            bullet.Seek(_target);
+        }
+        
     }
 
     private void OnDrawGizmosSelected()

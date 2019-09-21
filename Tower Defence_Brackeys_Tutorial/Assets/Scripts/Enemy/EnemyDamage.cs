@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _bulletImpactParticle;
 
-
-    private void OnParticleCollision(GameObject other)
+    private void OnTriggerEnter(Collider other)
     {
-        //  _bulletImpactParticle.Play();
-        ParticleSystem bulletImpact = Instantiate(_bulletImpactParticle, transform.position, Quaternion.identity);
-        Destroy(bulletImpact, bulletImpact.main.duration);      // Destroy this impact prticle after it plays completely
-
-        Destroy(gameObject);
+        if(other.tag == "Ammo")
+        {
+            Destroy(gameObject);
+        }
     }
 }
