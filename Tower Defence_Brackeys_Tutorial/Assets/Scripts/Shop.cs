@@ -2,9 +2,10 @@
 
 public class Shop : MonoBehaviour
 {
-
-
     private BuildManager _buildManager;
+    public TurretBlueprint standaredTurret;
+    public TurretBlueprint missileTurret;
+    public TurretBlueprint laserTurret;
 
     private void Start()
     {
@@ -13,21 +14,21 @@ public class Shop : MonoBehaviour
 
 
 
-    public void StandardTurretPurchase()
+    public void SelectStandaredTurret()
     {
-        _buildManager.SetTurretToBuild(_buildManager.standaredTurret);
+        _buildManager.SelectTurretToBuild(standaredTurret);
         Debug.Log("Standared Turret selected");
     } 
 
-    public void MissileTurretPurchase()
+    public void SelectMissileTurret()
     {
-        _buildManager.SetTurretToBuild(_buildManager.missileTurret);
+        _buildManager.SelectTurretToBuild(missileTurret);
         Debug.Log("Missile Turret selected");
     }
 
-    public void LaserTurretPurchase()
+    public void SelectLaserTurret()
     {
-        _buildManager.SetTurretToBuild(_buildManager.laserTurret);
+        _buildManager.SelectTurretToBuild(laserTurret);
         Debug.Log("Laser Turret selected");
     }
 

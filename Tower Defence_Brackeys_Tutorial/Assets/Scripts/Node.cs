@@ -5,13 +5,18 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
+
     [SerializeField] private Color _hoverColor;
     [SerializeField] private Color _errorColor;
-    [SerializeField] private GameObject _turret;
+
     [SerializeField] private Vector3 _positionOffset;       // To correctly place the tower on the node
+    public Vector3 GetBuildPosition { get { return transform.position + _positionOffset; } }
 
     private Color _startColor;
     private Renderer _rend;
+    
+    [Header("Optional")]
+    public GameObject turret;
 
     void Start()
     {
@@ -25,10 +30,10 @@ public class Node : MonoBehaviour
     // When mouse enters this gameobject change its color
     private void OnMouseEnter()
     {
-        if (BuildManager.Instance.TurretToBuild == null) { return; }        // If no turret selected then no need to highlight
+        if (!BuildManager.Instance.CanBuild) { return; }        // If no turret selected then no need to highlight
         if (EventSystem.current.IsPointerOverGameObject()) { return; }      // If we are hovering over UI
 
-        if (_turret == null)
+        if (turret == null)
         {
             _rend.material.color = _hoverColor;
         }else
@@ -42,20 +47,22 @@ public class Node : MonoBehaviour
         _rend.material.color = _startColor;
     }
 
+
+
+
     // When clicking the mosue button
     private void OnMouseDown()
     {
-        if(BuildManager.Instance.TurretToBuild == null) { return; }      // If no turrets selected do nothing
+        if(!BuildManager.Instance.CanBuild) { return; }      // If no turrets selected do nothing
         if (EventSystem.current.IsPointerOverGameObject()) { return; }   // If we are hovering over UI
 
-        if (_turret != null)                                             // If there's a turrent in this node then
+        if (turret != null)                                             // If there's a turrent in this node then
         {
             print("cant build turret here");
             return;
         }
 
         // build a turret
-        GameObject turretToBuild = BuildManager.Instance.TurretToBuild;
-        _turret = Instantiate(turretToBuild, transform.position + _positionOffset, Quaternion.identity) as GameObject;
+        BuildManager.Instance.BuildTurretOn(this);
     }
 }

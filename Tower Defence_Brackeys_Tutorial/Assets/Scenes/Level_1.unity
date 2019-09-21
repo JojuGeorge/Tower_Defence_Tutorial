@@ -6985,6 +6985,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9511b8b909877468ffd7f8c65758b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaredTurret:
+    turret: {fileID: 2503782718735174681, guid: 7fba859106fe9da45acee15bc64ffc28,
+      type: 3}
+    cost: 100
+  missileTurret:
+    turret: {fileID: 6837261483478143691, guid: c52913b73d513c446a76a6e938937575,
+      type: 3}
+    cost: 200
+  laserTurret:
+    turret: {fileID: 0}
+    cost: 0
 --- !u!1001 &830728099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9115,7 +9126,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 814900973}
-        m_MethodName: MissileTurretPurchase
+        m_MethodName: SelectMissileTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10216,7 +10227,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 814900973}
-        m_MethodName: StandardTurretPurchase
+        m_MethodName: SelectStandaredTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13769,7 +13780,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 814900973}
-        m_MethodName: LaserTurretPurchase
+        m_MethodName: SelectMissileTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
