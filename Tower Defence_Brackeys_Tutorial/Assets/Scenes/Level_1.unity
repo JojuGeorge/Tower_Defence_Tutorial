@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 130009512}
   - component: {fileID: 130009513}
   - component: {fileID: 130009514}
+  - component: {fileID: 130009515}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -654,6 +655,19 @@ MonoBehaviour:
   missileTurret: {fileID: 6837261483478143691, guid: c52913b73d513c446a76a6e938937575,
     type: 3}
   laserTurret: {fileID: 0}
+--- !u!114 &130009515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130009511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9a869508298b2438d092c3460168a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 400
 --- !u!1001 &143218871
 PrefabInstance:
   m_ObjectHideFlags: 0
