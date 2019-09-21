@@ -33,7 +33,16 @@ public class BuildManager : MonoBehaviour
 
     public void BuildTurretOn(Node node)
     {
+        if(PlayerStats.money < _turretToBuild.cost)
+        {
+            Debug.Log("Not enough money");
+            return;
+        }
+        PlayerStats.money -= _turretToBuild.cost;
+
         GameObject _turret = Instantiate(_turretToBuild.turret, node.GetBuildPosition, Quaternion.identity) as GameObject;
         node.turret = _turret;
+
+        Debug.Log("Turret purchased - money left = " + PlayerStats.money);
     }
 }
