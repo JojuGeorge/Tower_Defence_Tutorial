@@ -36,7 +36,7 @@ public class Node : MonoBehaviour
         if (turret == null && BuildManager.Instance.HasMoney)
         {
             _rend.material.color = _hoverColor;
-        }else
+        }else 
         {
             _rend.material.color = _errorColor;
         }

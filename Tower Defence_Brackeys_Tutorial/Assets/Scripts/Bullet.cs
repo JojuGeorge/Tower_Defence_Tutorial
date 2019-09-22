@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
+    [SerializeField] private int _damage = 10;
     [SerializeField] private GameObject _impactParticle;
     [SerializeField] private float _explosionRadius = 0f;
 
@@ -70,7 +71,12 @@ public class Bullet : MonoBehaviour
 
     private void Damage(Transform enemy)
     {
-       // Destroy(enemy.gameObject);
+        // Destroy(enemy.gameObject);
+        Enemy thisEnemy = enemy.GetComponent<Enemy>();
+        if (thisEnemy != null)
+        {
+            thisEnemy.TakeDamage(_damage);
+        }
     }
 
     private void OnDrawGizmos()

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float _speed;
     [SerializeField] private int _health;
+    [SerializeField] private int _value = 50;
 
     private Transform _target;
     private int _waypointIndex = 0;
@@ -50,19 +51,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     private void EndOfPath()
     {
         PlayerStats.lives--;
         Destroy(gameObject);
     }
 
+
     public void TakeDamage(int amount)
     {
         _health -= amount;
     }
 
+
     private void Die()
     {
+        PlayerStats.money += _value;            // Add money to player when the enemy dies
         Destroy(gameObject);
     }
 }
