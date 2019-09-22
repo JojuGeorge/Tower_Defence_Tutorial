@@ -33,7 +33,7 @@ public class Node : MonoBehaviour
         if (!BuildManager.Instance.CanBuild) { return; }        // If no turret selected then no need to highlight
         if (EventSystem.current.IsPointerOverGameObject()) { return; }      // If we are hovering over UI
 
-        if (turret == null)
+        if (turret == null && BuildManager.Instance.HasMoney)
         {
             _rend.material.color = _hoverColor;
         }else

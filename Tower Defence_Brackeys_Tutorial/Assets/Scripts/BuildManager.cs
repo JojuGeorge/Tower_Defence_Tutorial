@@ -9,8 +9,9 @@ public class BuildManager : MonoBehaviour
     public static BuildManager Instance { get { return _instance; } }
 
     private TurretBlueprint _turretToBuild;
-    public bool CanBuild { get { return _turretToBuild != null; } }
 
+    public bool CanBuild { get { return _turretToBuild != null; } }
+    public bool HasMoney { get { return PlayerStats.money > _turretToBuild.cost; } }
     public GameObject standaredTurret, missileTurret, laserTurret;
 
 

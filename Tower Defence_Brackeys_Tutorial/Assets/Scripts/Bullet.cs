@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        // todo : if the missile tracks a target and fires but before hitting enemy if it is destroyed by the other turret then the missile disappears
+
         // For heat seeking like funcitonality. locking on to a target
         Vector3 dir =_target.position - transform.position;     // Direction to move the bullet
         float distanceThisFrame = _speed * Time.deltaTime;
