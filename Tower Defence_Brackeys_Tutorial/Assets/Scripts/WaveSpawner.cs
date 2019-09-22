@@ -43,6 +43,7 @@ public class WaveSpawner : MonoBehaviour
     private void SpawnWave()
     {
         _waveNumber++;
+        PlayerStats.rounds++;
        StartCoroutine(SpawnEnemy());
     }
 

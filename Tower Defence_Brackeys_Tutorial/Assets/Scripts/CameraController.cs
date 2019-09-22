@@ -14,6 +14,13 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        // For disabling panning of camera by turning off this script
+        if (GameManager.gameIsOver)
+        {
+            this.enabled = false;
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             _doPanning = !_doPanning;
@@ -22,8 +29,7 @@ public class CameraController : MonoBehaviour
         if (!_doPanning)
             return;
 
-        
-
+     
         // If we click W or if mouse at top of the screen the move forward i.e in z
         if (Input.GetKey(KeyCode.W)) // || Input.mousePosition.y >= Screen.height - _panBorderThickness)
         {
