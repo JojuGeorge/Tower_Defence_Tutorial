@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     [SerializeField] private float _speed;
+    [SerializeField] private int _health;
 
     private Transform _target;
     private int _waypointIndex = 0;
@@ -24,6 +25,12 @@ public class EnemyMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, _target.position) < 0.2f)
         {
             GetNextWaypoint();
+        }
+
+        // Health
+        if(_health <= 0)
+        {
+            Die();
         }
 
     }
@@ -46,6 +53,16 @@ public class EnemyMovement : MonoBehaviour
     private void EndOfPath()
     {
         PlayerStats.lives--;
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        _health -= amount;
+    }
+
+    private void Die()
+    {
         Destroy(gameObject);
     }
 }

@@ -70,7 +70,7 @@ public class Bullet : MonoBehaviour
 
     private void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+       // Destroy(enemy.gameObject);
     }
 
     private void OnDrawGizmos()

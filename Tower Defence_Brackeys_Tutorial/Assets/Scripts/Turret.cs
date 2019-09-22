@@ -50,7 +50,7 @@ public class Turret : MonoBehaviour
     // For getting the closest enemy
     private void UpdateEnemy()
     {
-        var enemies = FindObjectsOfType<EnemyMovement>();       // Find all game object with EnemyMovement.cs script
+        var enemies = FindObjectsOfType<Enemy>();       // Find all game object with Enemy.cs script
         GameObject nearstEnemy = null;
         float shortestDistance = Mathf.Infinity;                // If no enemies then the shortest distance is max
 
