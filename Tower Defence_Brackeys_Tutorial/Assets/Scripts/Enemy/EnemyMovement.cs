@@ -38,8 +38,14 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            EndOfPath();
             return;                 // Destroy() might have a slight delay
         }
+    }
+
+    private void EndOfPath()
+    {
+        PlayerStats.lives--;
+        Destroy(gameObject);
     }
 }

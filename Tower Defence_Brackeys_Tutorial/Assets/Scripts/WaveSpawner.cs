@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _enemyPrefab;
     [SerializeField] private Transform _enemySpawnPoint;
@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     public float CountDown { get { return _countDown; } set { _countDown = value; } }
 
     // Singleton
-    private static GameManager _instance;
-    public static GameManager Instance { get { return _instance; } }
+    private static WaveSpawner _instance;
+    public static WaveSpawner Instance { get { return _instance; } }
 
     
     private void Awake()
