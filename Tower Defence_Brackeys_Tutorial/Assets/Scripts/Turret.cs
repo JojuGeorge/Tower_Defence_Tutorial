@@ -23,6 +23,8 @@ public class Turret : MonoBehaviour
     [Header("Use Laser")]
     [SerializeField] private bool _useLaser;
     [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private ParticleSystem _laserImpactParticleSystem;
+    [SerializeField] private Light _laserImpactLight;
 
 
 
@@ -41,7 +43,11 @@ public class Turret : MonoBehaviour
             {
                 // So that when the target becomes null the line must disappear
                 if (_lineRenderer.enabled)
+                {
                     _lineRenderer.enabled = false;
+                    _laserImpactParticleSystem.Stop();
+                    _laserImpactLight.enabled = false;
+                }
             }
             return;
         }
@@ -125,7 +131,16 @@ public class Turret : MonoBehaviour
     private void Laser()
     {
         if (!_lineRenderer.enabled)
+        {
             _lineRenderer.enabled = true;
+            _laserImpactParticleSystem.Play();
+            _laserImpactLight.enabled = true;
+        }
+
+        Vector3 dir = _fireingPoint.position - _target.position;
+        _laserImpactParticleSystem.transform.position = _target.position + dir.normalized;    // So that the particle plays outside the enemy and not inside
+        _laserImpactParticleSystem.transform.rotation = Quaternion.LookRotation(dir);               // So that the laser particles seems to be hit and bounce to enemy in dir of laser
+
         _lineRenderer.SetPosition(0, _fireingPoint.position);
         _lineRenderer.SetPosition(1, _target.position);
     }

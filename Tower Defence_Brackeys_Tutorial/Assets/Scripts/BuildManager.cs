@@ -49,6 +49,5 @@ public class BuildManager : MonoBehaviour
 
         PlayerStats.money -= _turretToBuild.cost;
 
-        Debug.Log("Turret purchased - money left = " + PlayerStats.money);
     }
 }
