@@ -10,6 +10,8 @@ public class BuildManager : MonoBehaviour
 
     private TurretBlueprint _turretToBuild;
 
+    [SerializeField] private GameObject _buildEffect;
+
     public bool CanBuild { get { return _turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.money > _turretToBuild.cost; } }
     public GameObject standaredTurret, missileTurret, laserTurret;
@@ -39,10 +41,14 @@ public class BuildManager : MonoBehaviour
             Debug.Log("Not enough money");
             return;
         }
-        PlayerStats.money -= _turretToBuild.cost;
 
         GameObject _turret = Instantiate(_turretToBuild.turret, node.GetBuildPosition, Quaternion.identity) as GameObject;
         node.turret = _turret;
+
+        GameObject effect = Instantiate(_buildEffect, node.GetBuildPosition, Quaternion.identity) as GameObject;
+        Destroy(effect, 3f);
+
+        PlayerStats.money -= _turretToBuild.cost;
 
         Debug.Log("Turret purchased - money left = " + PlayerStats.money);
     }
