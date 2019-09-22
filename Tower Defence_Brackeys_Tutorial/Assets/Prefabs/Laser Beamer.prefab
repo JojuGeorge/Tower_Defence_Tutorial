@@ -9690,6 +9690,8 @@ MonoBehaviour:
   _lineRenderer: {fileID: 1815091989}
   _laserImpactParticleSystem: {fileID: 225730835909216073}
   _laserImpactLight: {fileID: 4945644632019985111}
+  _damageOverTime: 30
+  _slowAmount: 0.5
 --- !u!1 &5619267765660593100
 GameObject:
   m_ObjectHideFlags: 0

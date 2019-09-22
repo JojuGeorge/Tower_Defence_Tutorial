@@ -16,5 +16,12 @@ public class PlayerStats : MonoBehaviour
         money = startMoney;
     }
 
-   
+    private void Update()
+    {
+        if(lives <=0)
+        {
+            lives = 0;
+        }
+    }
+
 }

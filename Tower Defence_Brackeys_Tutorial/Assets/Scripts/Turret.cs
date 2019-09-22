@@ -5,6 +5,8 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private Transform _target = null;
+    private Enemy _targetEnemy;
+
     private float _fireCountDown = 0f;
 
     [Header("Unity Setup Fields")]
@@ -25,6 +27,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private ParticleSystem _laserImpactParticleSystem;
     [SerializeField] private Light _laserImpactLight;
+    [SerializeField] private int _damageOverTime = 30;
+    [SerializeField] private float _slowAmount = .3f;
 
 
 
@@ -96,6 +100,11 @@ public class Turret : MonoBehaviour
         if(nearstEnemy != null && shortestDistance <= _range)       // If the nearest enemy is not null and is with in the range of the turret then
         {
             _target = nearstEnemy.transform;
+            _targetEnemy = nearstEnemy.GetComponent<Enemy>();
+        }
+        else
+        {
+            _target = null;
         }
     }
 
@@ -130,6 +139,10 @@ public class Turret : MonoBehaviour
     // For lasering
     private void Laser()
     {
+        //  _target.GetComponent<Enemy>().TakeDamage(_damageOverTime * Time.deltaTime);
+        _targetEnemy.TakeDamage(_damageOverTime * Time.deltaTime);      // Insetead of GetComponent<>() which is very taxing
+        _targetEnemy.Slow(_slowAmount);        // For making enemy slow
+
         if (!_lineRenderer.enabled)
         {
             _lineRenderer.enabled = true;

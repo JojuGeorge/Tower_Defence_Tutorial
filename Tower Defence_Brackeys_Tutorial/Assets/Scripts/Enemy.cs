@@ -5,70 +5,45 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField] private float _speed;
-    [SerializeField] private int _health;
-    [SerializeField] private int _value = 50;
+    public float startSpeed = 10f;
+
+    [HideInInspector] public float speed;
+
+    [SerializeField] private float _health;
+    [SerializeField] private int _worth = 50;
     [SerializeField] private GameObject _deathEffect;
 
-    private Transform _target;
-    private int _waypointIndex = 0;
 
     private void Start()
     {
-        _target = Waypoint.points[_waypointIndex];
+        speed = startSpeed;
     }
 
     private void Update()
-    {
-        Vector3 dir = _target.position - transform.position;
-        transform.Translate(dir.normalized * _speed * Time.deltaTime, Space.World);
-
-        // If we've reached the next waypoint then
-        if (Vector3.Distance(transform.position, _target.position) < 0.2f)
-        {
-            GetNextWaypoint();
-        }
-
+    { 
         // Health
         if(_health <= 0)
         {
             Die();
         }
-
     }
 
-    // Gets the next waypoint
-    private void GetNextWaypoint()
-    {
-        _waypointIndex++;
-        if(_waypointIndex < Waypoint.points.Length)
-        {
-            _target = Waypoint.points[_waypointIndex];
-        }
-        else
-        {
-            EndOfPath();
-            return;                 // Destroy() might have a slight delay
-        }
-    }
+    
 
-
-    private void EndOfPath()
-    {
-        PlayerStats.lives--;
-        Destroy(gameObject);
-    }
-
-
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         _health -= amount;
     }
 
+    public void Slow(float slowAmount) {
+        speed = startSpeed * (1f - slowAmount);     // startspeed added bcos it is not modified else the enemie speed goes on slowing 
+    }
+
+
 
     private void Die()
     {
-        PlayerStats.money += _value;            // Add money to player when the enemy dies
+        PlayerStats.money += _worth;            // Add money to player when the enemy dies
         GameObject effect = Instantiate(_deathEffect, transform.position, Quaternion.identity) as GameObject;
         Destroy(effect, 3f);
         Destroy(gameObject);

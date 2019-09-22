@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a869508298b2438d092c3460168a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 500
+  startMoney: 10000
   startLives: 1
 --- !u!114 &130009516
 MonoBehaviour:
