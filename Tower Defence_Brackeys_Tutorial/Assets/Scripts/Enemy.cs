@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private int _health;
     [SerializeField] private int _value = 50;
+    [SerializeField] private GameObject _deathEffect;
 
     private Transform _target;
     private int _waypointIndex = 0;
@@ -68,6 +69,8 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         PlayerStats.money += _value;            // Add money to player when the enemy dies
+        GameObject effect = Instantiate(_deathEffect, transform.position, Quaternion.identity) as GameObject;
+        Destroy(effect, 3f);
         Destroy(gameObject);
     }
 }

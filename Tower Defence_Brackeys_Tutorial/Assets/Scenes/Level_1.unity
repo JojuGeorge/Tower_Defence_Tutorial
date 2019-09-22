@@ -11366,7 +11366,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213467606}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 86.9}
+  m_LocalPosition: {x: 0, y: 0, z: 88.6}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 1556020279}
@@ -11376,7 +11376,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 37.5, y: 0}
-  m_SizeDelta: {x: 801.13, y: 243}
+  m_SizeDelta: {x: 801.13, y: 221.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1217231098
 PrefabInstance:
@@ -14834,11 +14834,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 200
-    m_Alignment: 4
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 20 LIVES
 --- !u!222 &1556020282

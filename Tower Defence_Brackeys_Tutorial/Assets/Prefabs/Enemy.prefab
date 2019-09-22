@@ -155,3 +155,5 @@ MonoBehaviour:
   _speed: 10
   _health: 100
   _value: 10
+  _deathEffect: {fileID: 689320167652781511, guid: 79c4c885bcbce0141b9910d8edc09d6f,
+    type: 3}
