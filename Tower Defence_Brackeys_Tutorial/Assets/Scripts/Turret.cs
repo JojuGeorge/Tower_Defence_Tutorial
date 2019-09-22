@@ -9,14 +9,21 @@ public class Turret : MonoBehaviour
 
     [Header("Unity Setup Fields")]
     [SerializeField] private Transform _turretHead;
-    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _fireingPoint;
 
-    [Header("Attributes")]
+    [Header("General")]
     [SerializeField] private float _range = 10f;
     [SerializeField] private float _enemyCheckRefreshRate = .5f;
     [SerializeField] private float _turretTurnSpeed = 5f;
+
+    [Header("Use Bullets (default)")]
     [SerializeField] private float _fireRate = 1f;
+    [SerializeField] private GameObject _bulletPrefab;
+
+    [Header("Use Laser")]
+    [SerializeField] private bool _useLaser;
+    [SerializeField] private LineRenderer _lineRenderer;
+
 
 
 
@@ -30,20 +37,33 @@ public class Turret : MonoBehaviour
     {
         if (_target == null)
         {
+            if (_useLaser)
+            {
+                // So that when the target becomes null the line must disappear
+                if (_lineRenderer.enabled)
+                    _lineRenderer.enabled = false;
+            }
             return;
         }
 
         // For looking at the target
         LookAtTarget();
 
-        // For firing at the enemies
-        _fireCountDown -= Time.deltaTime;
-        if(_fireCountDown <= 0 && _target != null)
+        // If we are using laser for attacking
+        if (_useLaser)
         {
-            Shoot();
-            _fireCountDown = 1f / _fireRate;
+            Laser();
         }
-        
+        else
+        {
+            // For firing at the enemies
+            _fireCountDown -= Time.deltaTime;
+            if (_fireCountDown <= 0 && _target != null)
+            {
+                Shoot();
+                _fireCountDown = 1f / _fireRate;
+            }
+        }   
     }
 
 
@@ -98,6 +118,16 @@ public class Turret : MonoBehaviour
             bullet.Seek(_target);
         }
         
+    }
+
+
+    // For lasering
+    private void Laser()
+    {
+        if (!_lineRenderer.enabled)
+            _lineRenderer.enabled = true;
+        _lineRenderer.SetPosition(0, _fireingPoint.position);
+        _lineRenderer.SetPosition(1, _target.position);
     }
 
     private void OnDrawGizmosSelected()
