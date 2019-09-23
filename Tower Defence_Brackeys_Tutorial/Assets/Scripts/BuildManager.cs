@@ -18,6 +18,8 @@ public class BuildManager : MonoBehaviour
     public bool CanBuild { get { return _turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.money > _turretToBuild.cost; } }
 
+    private GameObject _turret;
+
 
 
     private void Awake()
@@ -64,13 +66,36 @@ public class BuildManager : MonoBehaviour
             return;
         }
 
-        GameObject _turret = Instantiate(_turretToBuild.turret, node.GetBuildPosition, Quaternion.identity) as GameObject;
+         _turret = Instantiate(_turretToBuild.turret, node.GetBuildPosition, Quaternion.identity) as GameObject;
         node.turret = _turret;
+        node.blueprint = _turretToBuild;
 
         GameObject effect = Instantiate(_buildEffect, node.GetBuildPosition, Quaternion.identity) as GameObject;
         Destroy(effect, 3f);
 
         PlayerStats.money -= _turretToBuild.cost;
 
+    }
+
+    public void UpgradeTurret(Node node, TurretBlueprint turret)
+    {
+        _turretToBuild = turret;
+        node.isUpgraded = true;
+
+        if (PlayerStats.money < _turretToBuild.upgradeCost)
+        {
+            Debug.Log("Not enough money");
+            return;
+        }
+
+        Destroy(_turret);           // Destroy the previous gameobject
+
+        GameObject _upgradedTurret = Instantiate(_turretToBuild.upgradedTurret, node.GetBuildPosition, Quaternion.identity) as GameObject;
+        node.turret = _upgradedTurret;
+
+        GameObject effect = Instantiate(_buildEffect, node.GetBuildPosition, Quaternion.identity) as GameObject;
+        Destroy(effect, 3f);
+
+        PlayerStats.money -= _turretToBuild.upgradeCost;
     }
 }
