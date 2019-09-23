@@ -852,7 +852,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 5804177164018467999, guid: 8c011d98cf357ca448bada253969c0ae,
     type: 3}
   _enemySpawnPoint: {fileID: 60853265}
-  _timeBetweenWaves: 20
+  _timeBetweenWaves: 5
   _delayBetweenEnemySpawn: 0.3
 --- !u!114 &130009514
 MonoBehaviour:
@@ -7808,7 +7808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 15.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

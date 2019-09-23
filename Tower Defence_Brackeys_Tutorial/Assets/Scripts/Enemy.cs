@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,13 +10,15 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public float speed;
 
-    [SerializeField] private float _health;
+    [SerializeField] private float _startHealth = 100f;
+    private float _health;
     [SerializeField] private int _worth = 50;
     [SerializeField] private GameObject _deathEffect;
-
+    [SerializeField] private Image _healthBar;
 
     private void Start()
     {
+        _health = _startHealth;
         speed = startSpeed;
     }
 
@@ -26,6 +29,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        _healthBar.fillAmount = _health / _startHealth;
     }
 
     
