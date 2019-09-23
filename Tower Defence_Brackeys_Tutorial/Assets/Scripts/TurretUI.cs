@@ -10,10 +10,7 @@ public class TurretUI : MonoBehaviour
     [SerializeField] private GameObject _uI;
     [SerializeField] private Text _upgradeCost;
     [SerializeField] private Button _upgradeButton;
-
-
-          
-        
+    [SerializeField] private Text _sellPrice;
 
     public void SetTarget(Node target)
     {
@@ -31,6 +28,7 @@ public class TurretUI : MonoBehaviour
             _upgradeCost.text = "DONE";
             _upgradeButton.interactable = false;
         }
+        _sellPrice.text = _target.blueprint.SellingPrice().ToString();
     }
 
         public void Hide()
@@ -41,6 +39,12 @@ public class TurretUI : MonoBehaviour
     public void Upgrade()
     {
         BuildManager.Instance.UpgradeTurret(_target, _target.blueprint);
+        BuildManager.Instance.DeselectNode();
+    }
+
+    public void Sell()
+    {
+        BuildManager.Instance.SellTurret(_target, _target.blueprint);
         BuildManager.Instance.DeselectNode();
     }
 }

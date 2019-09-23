@@ -772,7 +772,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 5804177164018467999, guid: 8c011d98cf357ca448bada253969c0ae,
     type: 3}
   _enemySpawnPoint: {fileID: 60853265}
-  _timeBetweenWaves: 10
+  _timeBetweenWaves: 20
   _delayBetweenEnemySpawn: 0.3
 --- !u!114 &130009514
 MonoBehaviour:

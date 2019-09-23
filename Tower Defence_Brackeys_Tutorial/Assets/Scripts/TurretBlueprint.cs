@@ -10,4 +10,9 @@ public class TurretBlueprint
 
     public GameObject upgradedTurret;
     public int upgradeCost;
+
+    public int SellingPrice()
+    {
+        return cost / 2;
+    }
 }

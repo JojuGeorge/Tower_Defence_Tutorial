@@ -39,7 +39,7 @@ public class BuildManager : MonoBehaviour
         }
 
         _selectedNode = node;
-        _turretToBuild = null;
+        _turretToBuild = null;          // since we need to get the turret on this node put null on already selected turret in this script
         turretUI.SetTarget(node);      // set node to display the ui
     }
 
@@ -77,9 +77,9 @@ public class BuildManager : MonoBehaviour
 
     }
 
-    public void UpgradeTurret(Node node, TurretBlueprint turret)
+    public void UpgradeTurret(Node node, TurretBlueprint blueprint)
     {
-        _turretToBuild = turret;
+        _turretToBuild = blueprint;
         node.isUpgraded = true;
 
         if (PlayerStats.money < _turretToBuild.upgradeCost)
@@ -92,10 +92,23 @@ public class BuildManager : MonoBehaviour
 
         GameObject _upgradedTurret = Instantiate(_turretToBuild.upgradedTurret, node.GetBuildPosition, Quaternion.identity) as GameObject;
         node.turret = _upgradedTurret;
+        node.blueprint = blueprint;
 
         GameObject effect = Instantiate(_buildEffect, node.GetBuildPosition, Quaternion.identity) as GameObject;
         Destroy(effect, 3f);
 
         PlayerStats.money -= _turretToBuild.upgradeCost;
+    }
+
+    public void SellTurret(Node node, TurretBlueprint blueprint)
+    {
+
+        node.isUpgraded = false;
+        PlayerStats.money += blueprint.SellingPrice();
+        Destroy(node.turret);
+        blueprint = null;
+    
+
+
     }
 }

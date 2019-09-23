@@ -17,7 +17,7 @@ public class Node : MonoBehaviour
     
     [Header("Optional")]
     public GameObject turret;
-    public TurretBlueprint blueprint;
+    public TurretBlueprint blueprint;       // set in BuildTurretOn() in buildmanager.cs
     public bool isUpgraded;
 
     void Start()
