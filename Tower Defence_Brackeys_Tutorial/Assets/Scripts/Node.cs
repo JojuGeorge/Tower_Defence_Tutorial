@@ -53,14 +53,16 @@ public class Node : MonoBehaviour
     // When clicking the mosue button
     private void OnMouseDown()
     {
-        if(!BuildManager.Instance.CanBuild) { return; }      // If no turrets selected do nothing
         if (EventSystem.current.IsPointerOverGameObject()) { return; }   // If we are hovering over UI
 
         if (turret != null)                                             // If there's a turrent in this node then
         {
+            BuildManager.Instance.SelectNode(this);             // For getting this node to display sell/ updgrade ui on turret
             print("cant build turret here");
             return;
         }
+
+        if (!BuildManager.Instance.CanBuild) { return; }      // If no turrets selected do nothing
 
         // build a turret
         BuildManager.Instance.BuildTurretOn(this);

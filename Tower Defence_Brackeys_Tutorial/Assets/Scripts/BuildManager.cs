@@ -9,6 +9,9 @@ public class BuildManager : MonoBehaviour
     public static BuildManager Instance { get { return _instance; } }
 
     private TurretBlueprint _turretToBuild;
+    private Node _selectedNode;
+    public TurretUI turretUI;
+
 
     [SerializeField] private GameObject _buildEffect;
 
@@ -25,13 +28,33 @@ public class BuildManager : MonoBehaviour
         }
     }
 
+    public void SelectNode(Node node) {
+        // for toggling the UI on and off
+        if(_selectedNode == node)
+        {
+            DeselectNode();
+            return;
+        }
+
+        _selectedNode = node;
+        _turretToBuild = null;
+        turretUI.SetTarget(node);      // set node to display the ui
+    }
 
 
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         _turretToBuild = turret;
+        DeselectNode();           
     }
 
+
+    public void DeselectNode()
+    {
+        _selectedNode = null;
+        turretUI.Hide();    // when we select a turret to build hide the turret ui
+        return;
+    }
 
     public void BuildTurretOn(Node node)
     {
