@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject _gameOverUI;
+   
     public static bool gameIsOver;
 
     private void Start()
@@ -16,7 +17,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(gameIsOver) { return; }
+
+        if (gameIsOver) { return; }
 
         if(PlayerStats.lives <= 0)
         {
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
+
+
 
     private void EndGame()
     {
