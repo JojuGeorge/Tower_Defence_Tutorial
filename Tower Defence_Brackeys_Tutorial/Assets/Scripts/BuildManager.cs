@@ -105,7 +105,8 @@ public class BuildManager : MonoBehaviour
 
         node.isUpgraded = false;
         PlayerStats.money += blueprint.SellingPrice();
-        Destroy(node.turret);
+
+        Destroy(_selectedNode.turret);
         blueprint = null;
     
 
