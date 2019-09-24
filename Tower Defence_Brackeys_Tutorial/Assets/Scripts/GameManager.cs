@@ -9,10 +9,9 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
 
-    [SerializeField] private SceneFader _sceneFader;
-    [SerializeField] private string _nextLevel;
-    [SerializeField] private int _levelToUnlock = 2;
+  
     [SerializeField] private GameObject _gameOverUI;
+    [SerializeField] private GameObject _completeGameUI;
    
     public static bool gameIsOver;
 
@@ -53,10 +52,10 @@ public class GameManager : MonoBehaviour
         _gameOverUI.SetActive(true);
     }
 
+
     public void LevelWon()
     {
-        Debug.Log("Next level");
-        PlayerPrefs.SetInt("levelReached", _levelToUnlock);      // for unlocking the 2nd level
-        _sceneFader.FadeTo(_nextLevel);
+        _completeGameUI.SetActive(true);
     }
+  
 }

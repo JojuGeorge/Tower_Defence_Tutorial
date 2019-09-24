@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] private Text _rounds;
     [SerializeField] private SceneFader _sceneFader;
 
-    private void OnEnable()
-    {
-        _rounds.text = PlayerStats.rounds.ToString();
-    }
+  
 
     public void Retry()
     {

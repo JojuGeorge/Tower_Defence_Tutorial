@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _deathEffect;
     [SerializeField] private Image _healthBar;
 
+    private bool _isDead = false;           // bcos enemy game object may take time to destroy then update() may call and we die again and get reward
+
     private void Start()
     {
         _health = _startHealth;
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     { 
         // Health
-        if(_health <= 0)
+        if(_health <= 0 && !_isDead)
         {
             Die();
         }
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        _isDead = true;
         WaveSpawner.enemiesAlive--;
         print("enemies alive in die method = " + WaveSpawner.enemiesAlive);
 
