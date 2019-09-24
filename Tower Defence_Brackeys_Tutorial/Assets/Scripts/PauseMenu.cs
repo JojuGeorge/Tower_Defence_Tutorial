@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private SceneFader _sceneFader;
     private bool _isPaused;
 
     private void Start()
@@ -42,11 +43,14 @@ public class PauseMenu : MonoBehaviour
     public void Retry()
     {
         _isPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main_Menu");
+        _isPaused = false;
+        //SceneManager.LoadScene("Main_Menu");
+        _sceneFader.FadeTo("Main_Menu");
     }
 }

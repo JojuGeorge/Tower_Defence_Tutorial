@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     [SerializeField] private Text _rounds;
+    [SerializeField] private SceneFader _sceneFader;
 
     private void OnEnable()
     {
@@ -15,11 +16,13 @@ public class GameOver : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main_Menu");
+        //SceneManager.LoadScene("Main_Menu");
+        _sceneFader.FadeTo("Main_Menu");
     }
 }
