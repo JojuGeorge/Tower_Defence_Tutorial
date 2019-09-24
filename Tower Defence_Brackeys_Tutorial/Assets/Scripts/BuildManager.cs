@@ -88,7 +88,7 @@ public class BuildManager : MonoBehaviour
             return;
         }
 
-        Destroy(_turret);           // Destroy the previous gameobject
+        Destroy(_selectedNode.turret);           // Destroy the previous gameobject
 
         GameObject _upgradedTurret = Instantiate(_turretToBuild.upgradedTurret, node.GetBuildPosition, Quaternion.identity) as GameObject;
         node.turret = _upgradedTurret;
