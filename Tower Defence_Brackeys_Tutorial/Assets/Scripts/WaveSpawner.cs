@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static int enemiesAlive = 0;
+
     [SerializeField] private Transform _enemyPrefab;
     [SerializeField] private Transform _enemySpawnPoint;
     [SerializeField] private float _timeBetweenWaves = 5f;
@@ -31,12 +33,16 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
+
+        if(enemiesAlive > 0) { return; }        // start next wave after all enemies are dead
+
         CountDown -= Time.deltaTime;
 
         if(CountDown <= 0)
         {
             SpawnWave();
             CountDown = _timeBetweenWaves;
+            return;
         }
     }
 
@@ -52,6 +58,7 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < _waveNumber; i++)
         {
             Instantiate(_enemyPrefab, _enemySpawnPoint.position, Quaternion.identity);
+            enemiesAlive++;
             yield return new WaitForSeconds(_delayBetweenEnemySpawn);
         }
     }
