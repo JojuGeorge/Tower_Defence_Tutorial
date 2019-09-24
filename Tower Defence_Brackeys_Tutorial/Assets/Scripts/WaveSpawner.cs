@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public Wave[] waves;
     public static int enemiesAlive = 0;
 
-    [SerializeField] private Transform _enemyPrefab;
     [SerializeField] private Transform _enemySpawnPoint;
     [SerializeField] private float _timeBetweenWaves = 5f;
-    [SerializeField] private float _delayBetweenEnemySpawn = .1f;         // Delay of each enemies in a spawn group
 
 
     private int _waveNumber = 0;
@@ -40,26 +39,36 @@ public class WaveSpawner : MonoBehaviour
 
         if(CountDown <= 0)
         {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
             CountDown = _timeBetweenWaves;
             return;
         }
     }
 
-    private void SpawnWave()
+    IEnumerator SpawnWave()
     {
-        _waveNumber++;
         PlayerStats.rounds++;
-       StartCoroutine(SpawnEnemy());
+        Wave wave = waves[_waveNumber];
+
+        Debug.Log("wave count = " + _waveNumber);
+        for (int i = 0; i < wave.enemyCount; i++)
+        {
+            SpawnEnemy(wave.enemyPrefab);
+            yield return new WaitForSeconds(1 / wave.spawnRate);
+        }
+
+        _waveNumber++;
+        if (_waveNumber == waves.Length)
+        {
+            Debug.Log("Next level");
+            this.enabled = false;
+        }
+
     }
 
-    IEnumerator SpawnEnemy()
+    private void  SpawnEnemy(GameObject enemy)
     {
-        for (int i = 0; i < _waveNumber; i++)
-        {
-            Instantiate(_enemyPrefab, _enemySpawnPoint.position, Quaternion.identity);
-            enemiesAlive++;
-            yield return new WaitForSeconds(_delayBetweenEnemySpawn);
-        }
+        Instantiate(enemy, _enemySpawnPoint.position, Quaternion.identity);
+        enemiesAlive++;
     }
 }
