@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a979b468482f1984b923ae87401a4dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelToLoad: Level_1
+  _levelToLoad: Level_Select
   _sceneFader: {fileID: 2041107544}
 --- !u!4 &584799084
 Transform:
@@ -1104,11 +1104,6 @@ PrefabInstance:
     - target: {fileID: 7413070523743695079, guid: 44e5d79aee3ccd642b60a2b3b082f48c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7413070522005763586, guid: 44e5d79aee3ccd642b60a2b3b082f48c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
