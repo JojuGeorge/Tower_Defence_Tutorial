@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private string _levelToLoad;
     [SerializeField] private SceneFader _sceneFader;
 
+    private void Start()
+    {
+        PlayerPrefs.SetInt("levelReached", 1);       // for testing
+    }
+
     public void Play()
     {
         //SceneManager.LoadScene(_levelToLoad);

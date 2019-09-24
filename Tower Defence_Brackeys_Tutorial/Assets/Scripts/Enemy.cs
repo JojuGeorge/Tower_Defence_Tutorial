@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         WaveSpawner.enemiesAlive--;
+        print("enemies alive in die method = " + WaveSpawner.enemiesAlive);
+
         PlayerStats.money += _worth;            // Add money to player when the enemy dies
         GameObject effect = Instantiate(_deathEffect, transform.position, Quaternion.identity) as GameObject;
         Destroy(effect, 3f);

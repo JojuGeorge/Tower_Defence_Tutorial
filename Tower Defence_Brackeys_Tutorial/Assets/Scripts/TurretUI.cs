@@ -18,16 +18,20 @@ public class TurretUI : MonoBehaviour
         transform.position = _target.GetBuildPosition;
         _uI.SetActive(true);
 
-        if (!target.isUpgraded)
+        if (!target.isUpgraded && PlayerStats.money > _target.blueprint.upgradeCost)
         {
             _upgradeCost.text = "$" + _target.blueprint.upgradeCost.ToString();
             _upgradeButton.interactable = true;
         }
-        else
+        else if (target.isUpgraded)
         {
             _upgradeCost.text = "DONE";
             _upgradeButton.interactable = false;
         }
+        else if(PlayerStats.money < _target.blueprint.upgradeCost){
+            _upgradeButton.interactable = false;
+        }
+
         _sellPrice.text = _target.blueprint.SellingPrice().ToString();
     }
 

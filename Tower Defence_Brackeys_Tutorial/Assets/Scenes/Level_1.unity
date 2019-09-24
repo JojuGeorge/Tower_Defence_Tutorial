@@ -875,7 +875,7 @@ MonoBehaviour:
     enemyCount: 18
     spawnRate: 1
   _enemySpawnPoint: {fileID: 60853265}
-  _timeBetweenWaves: 5
+  _timeBetweenWaves: 1
 --- !u!114 &130009514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,6 +917,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1797463ca7acaab4f9eb9d597c6fb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneFader: {fileID: 7413070523121663202}
+  _nextLevel: Level_2
+  _levelToUnlock: 2
   _gameOverUI: {fileID: 1248467339}
 --- !u!114 &130009517
 MonoBehaviour:
